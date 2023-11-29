@@ -17,6 +17,7 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.6",
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
@@ -45,6 +46,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "larastan-exec": [
+            "vendor/bin/phpstan analyse --memory-limit=1G --configuration=phpstan.neon"
+        ],
+        "php-cs-fixer-exec": [
+            "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix"
         ]
     },
     "extra": {

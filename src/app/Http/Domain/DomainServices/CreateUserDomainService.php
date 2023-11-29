@@ -2,10 +2,12 @@
 
 namespace App\Http\Domain\DomainServices;
 
+use Illuminate\Http\Request;
+
 class CreateUserDomainService
 {
-    public function create($id)
+    public function createUser(Request $request): array
     {
-        return 'test from domain service';
+        return ['test from domain service'];
     }
 }

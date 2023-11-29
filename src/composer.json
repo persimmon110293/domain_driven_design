@@ -46,6 +46,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "larastan-exec": [
+            "vendor/bin/phpstan analyse --memory-limit=1G --configuration=phpstan.neon"
+        ],
+        "php-cs-fixer-exec": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --diff --ansi --allow-risky=yes"
         ]
     },
     "extra": {

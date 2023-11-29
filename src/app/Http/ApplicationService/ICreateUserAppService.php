@@ -8,4 +8,3 @@ interface ICreateUserAppService
 {
     public function createUser(Request $request): array;
 }
-

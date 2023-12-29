@@ -4,6 +4,7 @@ namespace Tests\Unit\Http\Translators;
 
 use PHPUnit\Framework\TestCase;
 use App\Http\Translators\GetUserTranslator;
+use App\Http\Domain\Entities\User;
 
 class GetUserTranslatorTest extends TestCase
 {
@@ -18,10 +19,13 @@ class GetUserTranslatorTest extends TestCase
 
     public function testTranslate(): void
     {
-        $user = new \stdClass();
-        $user->id = '1';
-        $user->name = 'Test User';
-        $user->email = 'test@example.com';
+        $user_param = new \stdClass();
+        $user_param->id = '1';
+        $user_param->name = 'Test User';
+        $user_param->email = 'test@example.com';
+        $user_param->password = 'password';
+
+        $user = new User($user_param);
 
         $expectedResult = [
             'id' => '1',

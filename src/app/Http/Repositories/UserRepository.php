@@ -3,11 +3,14 @@
 namespace App\Http\Repositories;
 
 use App\Http\Repositories\IUserRepository;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository implements IUserRepository
 {
-    public function createUser($data)
+    public function getUserById(string $id)
     {
-        // TODO: Implement logic to create a new user in the database
+        return DB::table('users')
+                ->where('id', $id)
+                ->first();
     }
 }

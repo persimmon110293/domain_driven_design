@@ -2,10 +2,13 @@
 
 namespace App\Http\Domain\DomainServices;
 
+use App\Http\Domain\Entities\User;
+
 class GetUserDomainService
 {
-    public function getUser()
+    public function getUser(object $user)
     {
-        return "test from domain service";
+        $user = new User($user);
+        return $user;
     }
 }

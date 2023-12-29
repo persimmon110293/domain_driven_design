@@ -4,5 +4,5 @@ namespace App\Http\ApplicationService;
 
 interface IGetUserAppService
 {
-    public function getUser();
+    public function getUser(string $id);
 }

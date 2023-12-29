@@ -23,7 +23,6 @@ services:
     # volumes:
     #   - mysql-volume:/var/lib/mysql
   web:
-    image: nginx:latest
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile

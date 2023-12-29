@@ -1,1 +1,0 @@
-# domain_driven_design

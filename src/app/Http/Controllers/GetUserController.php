@@ -19,7 +19,7 @@ class GetUserController extends Controller
 
     public function __invoke(Request $request)
     {
-        $id = $request->route('id');
+        $id = $request->query('id');
         $user = $this->appService->getUser($id);
 
         $user = $this->translator->translate($user);

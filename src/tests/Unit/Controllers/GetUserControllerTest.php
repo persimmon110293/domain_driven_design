@@ -9,6 +9,8 @@ use App\Http\ApplicationService\IGetUserAppService;
 use App\Http\Translators\GetUserTranslator;
 use App\Http\Domain\Entities\User;
 use stdClass;
+use Exception;
+use App\Exceptions\UserNotFoundException;
 
 class GetUserControllerTest extends TestCase
 {
@@ -67,6 +69,19 @@ class GetUserControllerTest extends TestCase
 
     public function testInvokeWithInvalidId(): void
     {
-        // TODO: あとで実装
+        // make necessary objects
+        $request = new Request();
+        $request->query->set('id', 1);
+
+        // set parameters for mocks
+        $this->appServiceMock->method('getUser')
+            ->with('-1')
+            ->willThrowException(new UserNotFoundException());
+
+        // run test
+        $controller = new GetUserController($this->appServiceMock, $this->translatorMock);
+        $result = $controller->__invoke($request);
+
+        $this->assertEquals(500, $result->getStatusCode());
     }
 }

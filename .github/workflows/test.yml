@@ -23,6 +23,7 @@ jobs:
     - name: Set up Docker
       run: |
         docker-compose up -d
+        docker-compose exec -T app cp .env.example .env
         docker-compose exec -T app cat .env
         docker-compose exec -T app composer install
         docker-compose exec -T app php artisan key:generate

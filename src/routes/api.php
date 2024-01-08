@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/user', CreateUserController::class);
-Route::get('/user/{id}', GetUserController::class);
+Route::get('/user', GetUserController::class); // ユーザー取得

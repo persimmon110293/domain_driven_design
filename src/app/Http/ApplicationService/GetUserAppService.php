@@ -5,6 +5,7 @@ namespace App\Http\ApplicationService;
 use App\Http\ApplicationService\IGetUserAppService;
 use App\Http\Domain\DomainServices\GetUserDomainService;
 use App\Http\Repositories\IUserRepository;
+use App\Exceptions\UserNotFoundException;
 
 class GetUserAppService implements IGetUserAppService
 {
@@ -20,6 +21,10 @@ class GetUserAppService implements IGetUserAppService
     public function getUser(string $id)
     {
         $user = $this->repository->getUserById($id);
+        if ($user === null) {
+            throw new UserNotFoundException("User not found.");
+        }
+
         return $this->domainService->getUser($user);
     }
 }

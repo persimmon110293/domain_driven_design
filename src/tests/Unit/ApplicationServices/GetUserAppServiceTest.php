@@ -7,6 +7,7 @@ use App\Http\ApplicationService\GetUserAppService;
 use App\Http\Domain\DomainServices\GetUserDomainService;
 use App\Http\Repositories\IUserRepository;
 use App\Http\Domain\Entities\User;
+use App\Exceptions\UserNotFoundException;
 
 class GetUserAppServiceTest extends TestCase
 {
@@ -40,5 +41,18 @@ class GetUserAppServiceTest extends TestCase
         $result = $this->getUserAppService->getUser('1');
 
         $this->assertEquals($userMock, $result);
+    }
+
+    public function testGetUserNotFound(): void
+    {
+        $this->expectException(UserNotFoundException::class);
+        $this->expectExceptionMessage('User not found.');
+
+        $this->userRepositoryMock->expects($this->once())
+            ->method('getUserById')
+            ->with('-1')
+            ->willReturn(null);
+
+        $this->getUserAppService->getUser('-1');
     }
 }

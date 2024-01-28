@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface ICreateUserAppService
 {
-    public function createUser(Request $request): array;
+    public function createUser(Request $request): bool;
 }

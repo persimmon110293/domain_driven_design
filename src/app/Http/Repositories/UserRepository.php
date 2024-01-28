@@ -13,4 +13,10 @@ class UserRepository implements IUserRepository
                 ->where('id', $id)
                 ->first();
     }
+
+    public function createUser(array $user)
+    {
+        return DB::table('users')
+                ->insert($user);
+    }
 }
